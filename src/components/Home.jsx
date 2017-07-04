@@ -6,7 +6,7 @@ export default class Home extends Component {
     return (
       <DocumentTitle title="Docs For Humans">
 
-        <div>Test</div>
+        <div><h1>Hi.</h1></div>
 
       </DocumentTitle>
     )

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from 'constants/theme'
+import * as theme from 'constants/theme'
 
 export const SiteStyles = styled.div`
   color: ${theme.colors.purple};

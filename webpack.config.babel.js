@@ -6,15 +6,18 @@ import extractText from '@webpack-blocks/extract-text2'
 import html from 'webpack-blocks-html'
 import webpack from 'webpack'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
+import packageJson from './package.json'
+import path from 'path'
 
 export default createConfig([
-  entryPoint(['babel-polyfill', './src/Main.js']),
+  entryPoint(['babel-polyfill', './src/main.js']),
   setOutput('./public/[name].[hash:8].js'),
   babel(),
   defineConstants({
     'process.env.NODE_ENV': process.env.NODE_ENV || 'production',
   }),
   html({template: 'assets/index.html'}),
+  resolve(),
   addPlugins([
     new FaviconsWebpackPlugin({
       logo: './assets/favicon.png',
@@ -54,3 +57,19 @@ export default createConfig([
     ]),
   ]),
 ])
+
+function resolve() {
+  return () => ({
+    resolve: {
+      modules: ['src', 'node_modules'],
+      alias: {
+        components: path.resolve(__dirname, 'src/components'),
+        state: path.resolve(__dirname, 'src/state'),
+        constants: path.resolve(__dirname, 'constants'),
+        assets: path.resolve(__dirname, 'assets'),
+        lib: path.resolve(__dirname, 'lib'),
+        src: path.resolve(__dirname, 'src'),
+      },
+    },
+  })
+}
