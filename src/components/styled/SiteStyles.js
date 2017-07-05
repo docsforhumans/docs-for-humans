@@ -2,57 +2,46 @@ import styled from 'styled-components'
 import * as theme from 'constants/theme'
 
 export const SiteStyles = styled.div`
-  color: ${theme.colors.purple};
-  background-color: ${theme.backgroundColor};
-  font-family: ${theme.fontFamily};
-  font-weight: ${theme.fontLight};
-  font-size: ${theme.defaultFontSize};
-  line-height: ${theme.defaultLineHeight};
+  width: 100vw;
+  height: 100vh;
+  color: ${theme.color.neutral};
+  font-family: ${theme.font.family.regular};
+  font-weight: ${theme.font.weight.regular};
+  font-size: ${theme.font.size};
+  line-height: ${theme.font.lineHeight};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
   h1 {
     width: 100%;
-    margin: 0.5em 0;
-    font-family: ${theme.headerFontFamily};
-    font-size: 2.1em;
-    font-weight: ${theme.fontBook};
+    margin: 0 0;
+    font-family: ${theme.font.family.regular};
+    font-size: 5em;
+    font-weight: ${theme.font.weight.bold};
     text-align: center;
   }
   h2 {
     width: 100%;
-    margin: 0.4em 0;
-    font-family: ${theme.headerFontFamily};
-    font-size: 1.75em;
-    font-weight: ${theme.fontBook};
+    margin: 0 0;
+    font-family: ${theme.font.family.header};
+    font-size: 5em;
+    font-weight: ${theme.font.weight.regular};
     text-align: center;
   }
   h3 {
     width: 100%;
-    margin: 0.3em 0;
-    font-family: ${theme.fontFamily};
-    font-size: 1.25em;
-    font-weight: ${theme.fontBold};
+    margin: 0.4em 0;
+    font-family: ${theme.font.family.header};
+    font-size: 1.75em;
+    font-weight: ${theme.font.weight.book};
     text-align: center;
   }
   h4 {
     width: 100%;
-    margin: 0.25em 0;
-    font-family: ${theme.fontFamily};
-    font-size: 1em;
-    font-weight: ${theme.fontBold};
+    margin: 0.3em 0;
+    font-family: ${theme.font.family.regular};
+    font-size: 1.25em;
+    font-weight: ${theme.font.weight.bold};
     text-align: center;
-  }
-  p {
-    font-family: ${theme.fontFamily};
-    font-size: 0.9em;
-    font-weight: ${theme.fontBook};
-  }
-  a {
-    text-decoration: none;
-  }
-  .row {
-    margin-right: 0;
-    margin-left: 0;
   }
 `

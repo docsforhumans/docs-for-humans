@@ -17,6 +17,8 @@
     "eslint-comments"
   ],
   "rules": {
+    "better/explicit-return": "off",
+    "fp/no-mutation": "off",
     "fp/no-this": "off",
     "fp/no-class": "off",
     "strict": "off",
@@ -35,7 +37,7 @@
     "eslint-comments/no-unused-disable": "error",
     "eslint-comments/no-unused-enable": "error",
     "immutable/no-let": "error",
-    "immutable/no-mutation": "error",
+    "immutable/no-mutation": "off",
     "indent": [
       "error",
       2,
@@ -61,9 +63,6 @@
     ],
     "no-template-curly-in-string": [
       "error"
-    ],
-    "class-methods-use-this": [
-      "warn"
     ],
     "consistent-return": [
       "error"
@@ -96,19 +95,8 @@
     "no-floating-decimal": [
       "error"
     ],
-    "no-invalid-this": [
-      "error"
-    ],
     "no-lone-blocks": [
       "error"
-    ],
-    "no-magic-numbers": [
-      "warn",
-      {
-        "ignoreArrayIndexes": true,
-        "enforceConst": true,
-        "ignore": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-      }
     ],
     "no-multi-spaces": [
       "error"
@@ -226,7 +214,7 @@
     ],
     "max-len": [
       "warn",
-      100,
+      150,
       2
     ],
     "max-nested-callbacks": [
