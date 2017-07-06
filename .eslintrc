@@ -164,7 +164,6 @@
     ],
     "brace-style": [
       "warn",
-      "stroustrup"
     ],
     "camelcase": [
       "warn"
