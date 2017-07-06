@@ -306,7 +306,7 @@ babel-code-frame@^6.11.0, babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-babel-core@^6.17.0, babel-core@^6.23.1, babel-core@^6.24.1:
+babel-core@^6.17.0, babel-core@^6.23.1, babel-core@^6.24.1, babel-core@^6.4.0:
   version "6.25.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.25.0.tgz#7dd42b0463c742e9d5296deb3ec67a9322dad729"
   dependencies:
@@ -501,6 +501,12 @@ babel-plugin-check-es2015-constants@^6.22.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-check-es2015-constants/-/babel-plugin-check-es2015-constants-6.22.0.tgz#35157b101426fd2ffd3da3f75c7d1e91835bbf8a"
   dependencies:
     babel-runtime "^6.22.0"
+
+babel-plugin-jsx-display-if@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-jsx-display-if/-/babel-plugin-jsx-display-if-3.0.0.tgz#4ea1b4ec3e5408729c380069ba601794c2f096f3"
+  dependencies:
+    babel-core "^6.4.0"
 
 babel-plugin-minify-builtins@^0.0.2:
   version "0.0.2"

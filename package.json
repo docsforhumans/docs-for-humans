@@ -14,6 +14,7 @@
   },
   "main": "src/main.js",
   "dependencies": {
+    "babel-plugin-jsx-display-if": "^3.0.0",
     "color": "^2.0.0",
     "constant-mirror": "^1.1.1",
     "eslint-plugin-node": "^5.1.0",

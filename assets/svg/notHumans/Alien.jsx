@@ -107,4 +107,5 @@ export default function Alien({color, opacity}) {
 
 Alien.propTypes = {
   color: PropTypes.string,
+  opacity: PropTypes.number,
 }
