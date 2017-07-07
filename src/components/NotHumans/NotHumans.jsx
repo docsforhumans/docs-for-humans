@@ -6,15 +6,12 @@ import No from 'assets/svg/notHumans/No'
 import {Styles} from './styles'
 
 export default function NotHumans({nonHuman, opacity, components}) {
-  const Component = getNonHuman() || components[1]
-  function getNonHuman() {
-    return components[nonHuman]
-  }
+  const Component = components[nonHuman] || components[1]
 
   return (
     <Styles>
       <Component color={theme.color.neutral} opacity={opacity} />
-      <No color="red" />
+      <No color="red" opacity={opacity} />
     </Styles>
   )
 }

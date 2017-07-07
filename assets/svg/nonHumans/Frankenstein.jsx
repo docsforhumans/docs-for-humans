@@ -11,8 +11,7 @@ export default function Frankenstein({color, opacity}) {
       version="1.1"
       x="0px"
       y="0px"
-      viewBox="0 0 150 150"
-      enableBackground="new 0 0 150 150"
+      viewBox="25 10 100 130"
       xmlSpace="preserve"
       style={{opacity}}
     >
