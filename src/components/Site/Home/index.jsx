@@ -60,43 +60,41 @@ export default compose(
       nonHumans.Vampire,
       nonHumans.Whale,
     ],
-    transition: function() {
-      const {setOpacity, changeNonHuman} = props
-      setOpacity(0)
-      setTimeout(changeNonHuman, 1000)
-    },
-    interval: window.setInterval(props.transition, 5000),
   })),
   withHandlers({
-    changeNonHuman: props => () => {
+    interval: props => () => {
       const {setOpacity, setNonHuman, nonHuman, components} = props
-      setNonHuman(rollNum())
-      function rollNum() {
-        const randomNum = random(1, components.length - 1)
-        if (randomNum === nonHuman) {
-          return rollNum()
-        } else {
-          setTimeout(() => setOpacity(1), 100)
-          return randomNum
+
+      function changeNonHuman() {
+        setNonHuman(rollNum())
+        function rollNum() {
+          const randomNum = random(1, components.length - 1)
+          if (randomNum === nonHuman) {
+            return rollNum()
+          } else {
+            setTimeout(() => setOpacity(1), 100)
+            return randomNum
+          }
         }
       }
-    },
-  }),
-  lifecycle({
-    componentDidMount() {
-      const {setOpacity, changeNonHuman, interval} = this.props
 
       function transition() {
+        console.log('transition')
         setOpacity(0)
         setTimeout(changeNonHuman, 1000)
       }
 
-      interval(transition)
+      window.setInterval(transition, 5000)
+    },
+  }),
+  lifecycle({
+    componentDidMount() {
+      const {interval} = this.props
+      interval()
     },
     componentWillUnmount() {
       const {interval} = this.props
-
-      interval(transition)
+      window.clearInterval(interval)
     },
   })
 )(Home)
