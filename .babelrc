@@ -3,13 +3,12 @@
   "plugins": [
     "transform-class-properties",
     "transform-object-rest-spread",
-    "transform-async-to-generator"
+    "transform-async-to-generator",
   ],
   "env": {
     "development": {
       "plugins": [
-        "react-hot-loader/babel",
-        "jsx-display-if",
+        "react-hot-loader/babel"
       ]
     },
     "production": {

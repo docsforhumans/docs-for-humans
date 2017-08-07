@@ -22,23 +22,25 @@ function Site({page, changePage, pages, shadowAngle}) {
           page={page}
           changePage={changePage}
         />
-        <Spacer display-if={page === 0} width="100%" height="5em" />
+        {page === 0 && <Spacer width="100%" height="5em" />}
         <Page shadowAngle={shadowAngle} />
-        <Spacer display-if={page === 0} width="100%" height="5em" />
-        <SignUpButton
-          onClick={changePage(0)}
-          display-if={page !== 0}
-          style={{boxShadow: `${shadowAngle}px 2px 10px rgba(0, 0, 0, 0.25)`}}
-        >
-          <h4>Sign Up</h4>
-        </SignUpButton>
-        <SignUpButton
-          onClick={changePage(1)}
-          display-if={page === 0}
-          shadowAngle={shadowAngle}
-        >
-          <h4>Done</h4>
-        </SignUpButton>
+        {page === 0 && <Spacer width="100%" height="5em" />}
+        {page !== 0 && (
+          <SignUpButton
+            onClick={changePage(0)}
+            style={{boxShadow: `${shadowAngle}px 2px 10px rgba(0, 0, 0, 0.25)`}}
+          >
+            <h4>Sign Up</h4>
+          </SignUpButton>
+        )}
+        {page === 0 && (
+          <SignUpButton
+            onClick={changePage(1)}
+            shadowAngle={shadowAngle}
+          >
+            <h4>Done</h4>
+          </SignUpButton>
+        )}
       </div>
 
     </DocumentTitle>

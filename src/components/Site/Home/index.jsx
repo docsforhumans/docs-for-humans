@@ -14,19 +14,21 @@ function Home({nonHuman, setNonHuman, opacity, setOpacity, components, shadowAng
       >
         Docs For
       </h1>
-      <h2
-        display-if={nonHuman === 0}
-        style={{opacity, transitionProperty: 'opacity', transitionDuration: '1s', textShadow: `${shadowAngle}px 7px 20px rgba(0, 0, 0, 0.25)`}}
-      >
-        Humans
-      </h2>
-      <NotHumans
-        display-if={nonHuman !== 0}
-        components={components}
-        nonHuman={nonHuman}
-        opacity={opacity}
-        shadowAngle={shadowAngle}
-      />
+      {nonHuman === 0 && (
+        <h2
+          style={{opacity, transitionProperty: 'opacity', transitionDuration: '1s', textShadow: `${shadowAngle}px 7px 20px rgba(0, 0, 0, 0.25)`}}
+        >
+          Humans
+        </h2>
+      )}
+      {nonHuman !== 0 && (
+        <NotHumans
+          components={components}
+          nonHuman={nonHuman}
+          opacity={opacity}
+          shadowAngle={shadowAngle}
+        />
+      )}
     </div>
   )
 }
