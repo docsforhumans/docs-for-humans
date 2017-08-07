@@ -6,7 +6,6 @@ import extractText from '@webpack-blocks/extract-text2'
 import html from 'webpack-blocks-html'
 import webpack from 'webpack'
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
-import packageJson from './package.json'
 import path from 'path'
 
 export default createConfig([
@@ -63,12 +62,12 @@ function resolve() {
     resolve: {
       modules: ['src', 'node_modules'],
       alias: {
-        components: path.resolve(__dirname, 'src/components'),
         state: path.resolve(__dirname, 'src/state'),
         constants: path.resolve(__dirname, 'constants'),
         assets: path.resolve(__dirname, 'assets'),
         lib: path.resolve(__dirname, 'lib'),
         src: path.resolve(__dirname, 'src'),
+        components: path.resolve(__dirname, 'src/components'),
       },
     },
   })

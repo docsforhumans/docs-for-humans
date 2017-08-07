@@ -17,6 +17,7 @@
     "eslint-comments"
   ],
   "rules": {
+    "better/no-new": "off",
     "better/explicit-return": "off",
     "fp/no-mutation": "off",
     "fp/no-this": "off",

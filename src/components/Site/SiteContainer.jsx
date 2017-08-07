@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {SiteStyles} from 'components/styled/SiteStyles'
-import * as theme from 'constants/theme'
-import {linearGradient} from 'lib/tools'
-
 import 'normalize.css'
+
+import {SiteStyles} from './styled/SiteStyles'
 
 export default class Site extends Component {
   static propTypes = {
@@ -36,10 +34,8 @@ export default class Site extends Component {
     const {children} = this.props
     return (
       <SiteStyles
-        style={{
-          background: linearGradient(this.state.gradientAngle, theme.color.pink, theme.color.orange),
-          textShadow: `${this.state.shadowAngle}px 7px 20px rgba(0, 0, 0, 0.25)`,
-        }}
+        gradientAngle={this.state.gradientAngle}
+        shadowAngle={this.state.shadowAngle}
         onMouseMove={this.handleMouse}
       >
         {children}
