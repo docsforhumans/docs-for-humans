@@ -9,8 +9,8 @@
     "clean": "if [ -d public ]; then rm -r public; fi",
     "deploy": "npm run clean && npm run build && npm run upload",
     "deploy:production": "npm run clean && npm run build && npm run upload:production",
-    "upload": "surge public dev.ecliptic.io",
-    "upload:production": "surge public ecliptic.io"
+    "upload": "surge public dev.docsforhumans.com",
+    "upload:production": "surge public docsforhumans.com"
   },
   "main": "src/main.js",
   "dependencies": {

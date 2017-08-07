@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import 'normalize.css'
 
+import * as theme from 'constants/theme'
+import {linearGradient} from 'lib/tools'
+
 import {SiteStyles} from './styled/SiteStyles'
 
 export default class Site extends Component {
@@ -32,13 +35,18 @@ export default class Site extends Component {
 
   render() {
     const {children} = this.props
+    const {shadowAngle, gradientAngle} = this.state
+    const childrenWithProps = React.Children.map(children, child => React.cloneElement(child, {
+      shadowAngle,
+      gradientAngle,
+    }))
     return (
       <SiteStyles
-        gradientAngle={this.state.gradientAngle}
+        style={{background: linearGradient(this.state.gradientAngle, theme.color.pink, theme.color.orange)}}
         shadowAngle={this.state.shadowAngle}
         onMouseMove={this.handleMouse}
       >
-        {children}
+        {childrenWithProps}
       </SiteStyles>
     )
   }

@@ -1,20 +1,22 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
-import {compose, withState, withProps, withHandlers, lifecycle} from 'recompose'
+import {compose, withState, withProps, lifecycle} from 'recompose'
 import random from 'lodash/random'
 
 import NotHumans from './NotHumans'
 import nonHumans from 'assets/svg/nonHumans'
-import {Spacer} from 'components/styled/utils'
 
-function Home({nonHuman, setNonHuman, opacity, setOpacity, components}) {
+function Home({nonHuman, setNonHuman, opacity, setOpacity, components, shadowAngle}) {
   return (
     <div>
-      <Spacer width="100%" height="calc(50vh - 8.125em)" />
-      <h1>Docs For</h1>
+      <h1
+        style={{textShadow: `${shadowAngle}px 7px 20px rgba(0, 0, 0, 0.25)`}}
+      >
+        Docs For
+      </h1>
       <h2
         display-if={nonHuman === 0}
-        style={{opacity, transitionDuration: '1s'}}
+        style={{opacity, transitionProperty: 'opacity', transitionDuration: '1s', textShadow: `${shadowAngle}px 7px 20px rgba(0, 0, 0, 0.25)`}}
       >
         Humans
       </h2>
@@ -23,6 +25,7 @@ function Home({nonHuman, setNonHuman, opacity, setOpacity, components}) {
         components={components}
         nonHuman={nonHuman}
         opacity={opacity}
+        shadowAngle={shadowAngle}
       />
     </div>
   )
@@ -34,13 +37,19 @@ Home.propTypes = {
   opacity: PropTypes.number,
   setOpacity: PropTypes.func,
   components: PropTypes.array,
+  shadowAngle: PropTypes.number,
 }
 
 export default compose(
   withState('nonHuman', 'setNonHuman', 0),
   withState('opacity', 'setOpacity', 1),
-  withProps(props => ({
-    components: [
+  withState('intervalID', 'setIntervalID', undefined),
+  withState('timer1ID', 'setTimer1ID', undefined),
+  withState('timer2ID', 'setTimer2ID', undefined),
+  withProps(props => {
+    const {setOpacity, setNonHuman, nonHuman, setTimer1ID, setTimer2ID} = props
+
+    const components = [
       null,
       nonHumans.Alien,
       nonHumans.Cat,
@@ -59,42 +68,39 @@ export default compose(
       nonHumans.Troll,
       nonHumans.Vampire,
       nonHumans.Whale,
-    ],
-  })),
-  withHandlers({
-    interval: props => () => {
-      const {setOpacity, setNonHuman, nonHuman, components} = props
+    ]
 
-      function changeNonHuman() {
-        setNonHuman(rollNum())
-        function rollNum() {
-          const randomNum = random(1, components.length - 1)
-          if (randomNum === nonHuman) {
-            return rollNum()
-          } else {
-            setTimeout(() => setOpacity(1), 100)
-            return randomNum
-          }
+    function changeNonHuman() {
+      setNonHuman(rollNum())
+      function rollNum() {
+        const randomNum = random(1, components.length - 1)
+        if (randomNum === nonHuman) {
+          return rollNum()
+        } else {
+          setTimer2ID(setTimeout(() => setOpacity(1), 100))
+          return randomNum
         }
       }
+    }
 
-      function transition() {
-        console.log('transition')
+    return {
+      components,
+      transition: () => {
         setOpacity(0)
-        setTimeout(changeNonHuman, 1000)
-      }
-
-      window.setInterval(transition, 5000)
-    },
+        setTimer1ID(setTimeout(changeNonHuman, 1000))
+      },
+    }
   }),
   lifecycle({
     componentDidMount() {
-      const {interval} = this.props
-      interval()
+      const {setIntervalID, transition} = this.props
+      setIntervalID(setInterval(transition, 5000))
     },
     componentWillUnmount() {
-      const {interval} = this.props
-      window.clearInterval(interval)
+      const {intervalID, timer1ID, timer2ID} = this.props
+      clearInterval(intervalID)
+      clearTimeout(timer1ID)
+      clearTimeout(timer2ID)
     },
-  })
+  }),
 )(Home)
