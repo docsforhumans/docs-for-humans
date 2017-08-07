@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react'
 
 export default function Why() {
@@ -9,3 +10,4 @@ export default function Why() {
     </div>
   )
 }
+/* eslint-enable max-len */

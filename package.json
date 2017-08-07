@@ -14,7 +14,6 @@
   },
   "main": "src/main.js",
   "dependencies": {
-    "babel-plugin-jsx-display-if": "^3.0.0",
     "color": "^2.0.0",
     "constant-mirror": "^1.1.1",
     "eslint-plugin-node": "^5.1.0",
@@ -42,6 +41,7 @@
     "@webpack-blocks/extract-text2": "^0.4.0",
     "@webpack-blocks/webpack2": "^0.4.0",
     "babel-eslint": "^7.1.1",
+    "babel-plugin-jsx-display-if": "^3.0.0",
     "babel-plugin-transform-async-to-generator": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
